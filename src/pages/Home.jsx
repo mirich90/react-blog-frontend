@@ -10,6 +10,7 @@ import { CommentsBlock } from "../components/CommentsBlock";
 import { fetchPosts, fetchTags } from "../redux/slices/posts";
 
 export const Home = () => {
+  const userData = useSelector((state) => state.auth.data);
   const { posts, tags } = useSelector((state) => state.posts);
   const isPostsLoading = posts.status === "loading";
   const isTagsLoading = tags.status === "loading";
@@ -45,7 +46,7 @@ export const Home = () => {
                 viewsCount={data.viewsCount}
                 commentsCount={3}
                 tags={data.tags}
-                isEditable
+                isEditable={userData?._id === data.user._id}
               />
             )
           )}
