@@ -10,10 +10,10 @@ import { CommentsBlock } from "../components/CommentsBlock";
 import { fetchPosts, fetchTags } from "../redux/slices/posts";
 
 export const Home = () => {
-  const dispatch = useDispatch();
   const { posts, tags } = useSelector((state) => state.posts);
   const isPostsLoading = posts.status === "loading";
   const isTagsLoading = tags.status === "loading";
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(fetchPosts());
